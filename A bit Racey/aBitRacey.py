@@ -24,7 +24,7 @@ block_color = (53, 115, 255)
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('A bit Racey')
 clock = pygame.time.Clock()
-carImg = pygame.image.load('car.png')
+carImg = pygame.image.load("C:\Git\Python\A bit Racey\car.png")
 car_width = carImg.get_width()
 
 
@@ -81,6 +81,7 @@ def game_intro():
 
         if 150 + 100 > mouse[0] > 150 and 450 + 50 > mouse[1] > 450:
             pygame.draw.rect(gameDisplay, bright_green, (150, 450, 100, 50))
+            game_loop()
         else:
             pygame.draw.rect(gameDisplay, green, (150, 450, 100, 50))
 
