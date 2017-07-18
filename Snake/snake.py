@@ -19,6 +19,14 @@ bright_red = (255, 0, 0)
 bright_green = (0, 255, 0)
 bright_blue = (0, 0, 255)
 
+smallText = pygame.font.Font("freesansbold.ttf", 20)
+mediumText = pygame.font.Font("freesansbold.ttf", 70)
+largeText = pygame.font.Font('freesansbold.ttf', 115)
+
+def score(count):
+    font = pygame.font.SysFont(None, 25)
+    text = font.render("Dodged: " + str(count), True, black)
+    gameDisplay.blit(text, (0, 0))
 
 FPS = 30
 block_size = 10
@@ -26,14 +34,12 @@ block_size = 10
 
 clock = pygame.time.Clock()
 
-font = pygame.font.SysFont(None,25)
-
 def snake(block_size, snakelist):
     for XnY in snakelist:
         pygame.draw.rect(gameDisplay, green, [XnY[0],XnY[1],block_size,block_size])
 
 def message_to_screen(msg,color):
-    screen_text = font.render(msg,True,color) #a mensagem
+    screen_text = smallText.render(msg,True,color) #a mensagem
     gameDisplay.blit(screen_text, [display_width/2,display_height/2]) #colocar no ecra
 
 def gameLoop():
