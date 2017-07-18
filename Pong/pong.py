@@ -30,32 +30,36 @@ def ai(ai_x,ai_y,color):
     pygame.draw.rect(gameDisplay, color, [ai_x, ai_y, 10, 100])
 
 def ball(ball_x,ball_y,color):
-    pygame.draw.circle(gameDisplay, color, (ball_x,ball_y),20)
+    pygame.draw.circle(gameDisplay, color, (ball_x,ball_y),15)
 
 def game_loop():
     player_x = 100
     player_y = (display_height/2)-50
 
+    y_change = 0
+
     ai_x = 700
     ai_y = player_y
 
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+    gameExit = False
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
-                    player_y -= 5
-                elif event.key == pygame.K_DOWN:
-                    player_y += 5
+    while not gameExit:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
 
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_UP:
-                    player_y -= 5
-                elif event.key == pygame.K_DOWN:
-                    player_y += 5
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_UP:
+                        y_change = -5
+                    elif event.key == pygame.K_DOWN:
+                        y_change = 5
+
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                        y_change = 0
+
+            player_y += y_change
 
 
             gameDisplay.fill(black)
